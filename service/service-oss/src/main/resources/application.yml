@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: service-oss #当前应用名 在动态配置和注册服务的时候使用
+  profiles: #激活专有环境（应用：全局统一日志、nacos配置中心动态配置）
+    active: dev
+mybatis-plus: #配置mp的日志信息 查看sql语句
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+server:
+  port: 8120 #当前应用的端口号
+
+#自定义配置
+aliyun:
+  oss:
+    scheme: "http://" #前缀
+    endpoint: "oss-cn-shanghai.aliyuncs.com"
+    accessKeyId: "LTAI4GEiESw7Vcys5W7XaRcT" #阿里云KeyId
+    accessKeySecret: "eHBetznpl9EIeMxw4kFBOLfrqtq7UW" #阿里云KeySecret
+    bucketName: "hehao-file" #oss桶名

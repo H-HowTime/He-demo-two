@@ -2,6 +2,7 @@ package com.atguigu.guli.service.edu.service.impl;
 
 import com.atguigu.guli.service.edu.entity.Teacher;
 import com.atguigu.guli.service.edu.entity.query.TeacherQuery;
+import com.atguigu.guli.service.edu.entity.vo.TeacherViewObject;
 import com.atguigu.guli.service.edu.mapper.TeacherMapper;
 import com.atguigu.guli.service.edu.service.TeacherService;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
@@ -57,5 +58,14 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
             queryWrapper.le("join_date",joinDateEnd);
         }
         return  baseMapper.selectPage(page, queryWrapper);
+    }
+
+    @Override
+    public TeacherViewObject getVOById(String id) {
+        Teacher teacher = baseMapper.selectById(id);
+        TeacherViewObject viewObject = new TeacherViewObject(teacher.getId(),
+                teacher.getName(),teacher.getLevel(),teacher.getSort(),teacher.getJoinDate(),
+                teacher.getCareer(),teacher.getIntro(),teacher.getAvatar());
+        return viewObject;
     }
 }

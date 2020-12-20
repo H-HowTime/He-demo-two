@@ -2,6 +2,7 @@ package com.atguigu.guli.service.edu.service;
 
 import com.atguigu.guli.service.edu.entity.Teacher;
 import com.atguigu.guli.service.edu.entity.query.TeacherQuery;
+import com.atguigu.guli.service.edu.entity.vo.TeacherViewObject;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -16,4 +17,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface TeacherService extends IService<Teacher> {
 
     Page<Teacher> pageByTeacherQuery(Integer pageNum, Integer pageSize, TeacherQuery teacherQuery);
+
+    TeacherViewObject getVOById(String id);
 }

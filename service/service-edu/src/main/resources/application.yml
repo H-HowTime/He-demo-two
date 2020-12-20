@@ -6,11 +6,17 @@ spring:
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/guli_edu?serverTimezone=GMT%2B8
-  jackson: #JSON格式化时间日期格式设置
+  jackson: #JSON格式化时间日期格式设置，当后端向前端传递json时间类型时，前端显示的数据格式
     time-zone: GMT+8 #东八区
-    date-format: yyyy-MM-dd HH:mm:ss
+    date-format: yyyy-MM-dd  #HH:mm:ss
+  profiles: #激活专有环境（应用：全局统一日志、nacos配置中心动态配置）
+    active: dev
 mybatis-plus: #配置mp的日志信息 查看sql语句
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 server:
   port: 8110 #当前应用的端口号
+
+#logging: #配置日志等级
+#  level:
+#    root: debug

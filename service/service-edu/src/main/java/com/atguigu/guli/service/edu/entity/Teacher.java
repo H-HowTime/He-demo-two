@@ -50,7 +50,7 @@ public class Teacher extends BaseEntity {
 
     @ApiModelProperty(value = "逻辑删除 1（true）已删除， 0（false）未删除")
     @TableField("is_deleted")
-    @TableLogic
+    @TableLogic //设置该字段为逻辑删除
     private Boolean deleted;
 
 

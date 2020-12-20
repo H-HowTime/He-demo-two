@@ -4,11 +4,13 @@ package com.atguigu.guli.service.edu.controller.admin;
 import com.atguigu.guli.service.base.result.R;
 import com.atguigu.guli.service.edu.entity.Teacher;
 import com.atguigu.guli.service.edu.entity.query.TeacherQuery;
+import com.atguigu.guli.service.edu.entity.vo.TeacherViewObject;
 import com.atguigu.guli.service.edu.service.TeacherService;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,8 @@ import java.util.List;
  * @author atguigu
  * @since 2020-12-15
  */
+@CrossOrigin //解决跨域问题，springMVC4.2以上版本支持
+@Slf4j //开启统一日志处理 spring boot 使用logback作为日志实现的框架。采用slf4j api
 @Api(tags = "讲师管理模块") //标注该应用在swagger2页面中的显示
 @RestController
 @RequestMapping("/admin/edu/teacher")
@@ -60,7 +64,7 @@ public class AdminTeacherController {
         return R.ok().data("page",page);
     }
     /**
-     * 请求参数： get方式 k=v&k1=v1 使用@ResquestParam("k")
+     * 请求参数： get方式 在请求路径后拼接?k=v&k1=v1 使用@ResquestParam("k")接收 或者使用pojo对象接收（k=v&k1=v1 k的值要和pojo属性名一致）
      * 请求体： post方式在请求体中以参数的形式提交（和get方式一样） / 请求体中以json字符串的形式提交 使用@ResquestBody接受
      * 路径参数： /remove/1  @DeleteMapping(/remove/{id}) @PathVariable("id")来接收
      *
@@ -107,9 +111,9 @@ public class AdminTeacherController {
     //查询指定讲师
     @ApiOperation(value = "查询指定讲师")
     @GetMapping(value = "/get/{id}")
-    public R getTById(@PathVariable Integer id){
-        Teacher teacher = teacherService.getById(id);
-        return R.ok().data("item",teacher);
+    public R getTById(@PathVariable String id){
+        TeacherViewObject viewObject = teacherService.getVOById(id);
+        return R.ok().data("vo",viewObject);
     }
     //更新讲师
     @ApiOperation(value = "更新指定讲师")
