@@ -2,6 +2,8 @@ package com.atguigu.guli.service.oss.service;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 /**
  * @author hehao
  * @create 2020-12-20 16:32
@@ -9,5 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 public interface FileService {
     String uploadFile(MultipartFile multipartFile, String module);
 
-    void deleteFile(String filePath);
+    void deleteFile(String filePath, String module);
+
+    void batchDelFile(List<String> paths, String module);
 }

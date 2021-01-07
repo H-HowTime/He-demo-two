@@ -39,6 +39,9 @@ public enum  ResultCodeEnum {
     PAY_RUN(false, 25000, "支付中"),
     PAY_UNIFIEDORDER_ERROR(false, 25001, "统一下单错误"),
     PAY_ORDERQUERY_ERROR(false, 25002, "查询支付结果错误"),
+    PAY_SIGN_ERROR(false, 25003, "签名错误"),
+    PAY_FEE_UNLIKE(false, 25004, "支付金额不一致"),
+
 
     ORDER_EXIST_ERROR(false, 25003, "课程已购买"),
 
@@ -54,7 +57,8 @@ public enum  ResultCodeEnum {
     LOGIN_AUTH(false, 28004, "需要登录"),
     LOGIN_ACL(false, 28005, "没有权限"),
     SMS_SEND_ERROR(false, 28006, "短信发送失败"),
-    SMS_SEND_ERROR_BUSINESS_LIMIT_CONTROL(false, 28007, "短信发送过于频繁");
+    SMS_SEND_ERROR_BUSINESS_LIMIT_CONTROL(false, 28007, "短信发送过于频繁"),
+    REMOTE_REQUEST_ERROR(false, 29000, "远程调用失败");
 
     private Boolean success; //是否成功
     private Integer code; //响应状态码

@@ -14,6 +14,12 @@
     <modules>
         <module>service-edu</module>
         <module>service-oss</module>
+        <module>service-vod</module>
+        <module>service-cms</module>
+        <module>service-sms</module>
+        <module>service-ucenter</module>
+        <module>service-trade</module>
+        <module>service-statistics</module>
     </modules>
     <dependencies>
         <!--依赖server-base-->
@@ -21,6 +27,21 @@
             <groupId>com.atguigu</groupId>
             <artifactId>service-base</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!--服务注册 引入nacos依赖-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+        </dependency>
+        <!--远程服务调用 引入openfeign依赖-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <!--开启熔断降级 sentinel依赖-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
     </dependencies>
 

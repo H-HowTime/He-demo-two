@@ -13,7 +13,7 @@ import java.util.Date;
  */
 @Data
 @AllArgsConstructor
-@ApiModel(value = "前端接收数据对象", description = "前端更新进行回显数据的对象")
+@ApiModel(value = "TeacherViewObject对象", description = "回传给前端的teacher数据封装")
 public class TeacherViewObject {
     @ApiModelProperty(value = "讲师id")
     private String id;

@@ -4,13 +4,14 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @author hehao
  * @create 2020-12-20 15:45
  */
-
+@EnableDiscoveryClient //开启nacos服务注册中心客户端功能
 @ComponentScan(basePackages = "com.atguigu.guli.service")
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)//该微服务不需要数据库连接 取消数据源的自动配置
 public class ServiceOSSApplication {

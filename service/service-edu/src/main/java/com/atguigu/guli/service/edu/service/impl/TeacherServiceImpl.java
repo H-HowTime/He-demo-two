@@ -15,6 +15,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * <p>
  * 讲师 服务实现类
@@ -67,5 +72,20 @@ public class TeacherServiceImpl extends ServiceImpl<TeacherMapper, Teacher> impl
                 teacher.getName(),teacher.getLevel(),teacher.getSort(),teacher.getJoinDate(),
                 teacher.getCareer(),teacher.getIntro(),teacher.getAvatar());
         return viewObject;
+    }
+
+    @Override
+    public List<Map<String, String>> getTeacherName() {
+        List<Teacher> teachers = baseMapper.selectList(null);
+
+        System.out.println("teachers = " + teachers);
+        List<Map<String,String>> list = new ArrayList<>();
+        Map<String,String> map = new HashMap<>();
+        for (Teacher teacher : teachers) {
+            String name = teacher.getName();
+            map.put("value",name);
+        }
+        list.add(map);
+        return list;
     }
 }

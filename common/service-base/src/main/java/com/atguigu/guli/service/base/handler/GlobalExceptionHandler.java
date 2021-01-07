@@ -1,5 +1,6 @@
 package com.atguigu.guli.service.base.handler;
 
+import com.atguigu.guli.service.base.exception.GuliException;
 import com.atguigu.guli.service.base.result.R;
 import com.atguigu.guli.service.base.result.ResultCodeEnum;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -18,16 +19,27 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
     public R serviceEduException(Exception e){
+        System.out.println("Exception异常处理方法被调用");
+        e.printStackTrace();
         return R.error();
     }
 
     @ExceptionHandler(value = BadSqlGrammarException.class)
     public R sqlException(BadSqlGrammarException sql){
-       return R.setResult(ResultCodeEnum.BAD_SQL_GRAMMAR);
+        System.out.println("BadSqlGrammarException异常处理方法被调用");
+        return R.setResult(ResultCodeEnum.BAD_SQL_GRAMMAR);
     }
 
     @ExceptionHandler(value = HttpMessageNotReadableException.class)
-    public R jsonException(){
+    public R jsonException(HttpMessageNotReadableException httpEx){
+        System.out.println("HttpMessageNotReadableException异常处理方法被调用");
         return R.setResult(ResultCodeEnum.JSON_PARSE_ERROR);
+    }
+
+    @ExceptionHandler(value = GuliException.class)
+    public R guliException(GuliException guliEx ){
+        System.out.println("GuliException异常处理方法被调用");
+        guliEx.printStackTrace();
+        return R.error().message(guliEx.getMessage());
     }
 }

@@ -1,7 +1,10 @@
 package com.atguigu.guli.service.edu.mapper;
 
 import com.atguigu.guli.service.edu.entity.CourseCollect;
+import com.atguigu.guli.service.edu.entity.vo.CollectCourseVo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +16,5 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  */
 public interface CourseCollectMapper extends BaseMapper<CourseCollect> {
 
+    List<CollectCourseVo> getCollectCourseList(String memberId);
 }

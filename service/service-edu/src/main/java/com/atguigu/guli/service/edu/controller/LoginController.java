@@ -3,7 +3,7 @@ package com.atguigu.guli.service.edu.controller;
 import com.atguigu.guli.service.base.result.R;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin //跨域
+//@CrossOrigin  由gateway网关全局路由配置 //跨域
 @RestController
 @RequestMapping("/user")
 public class LoginController {

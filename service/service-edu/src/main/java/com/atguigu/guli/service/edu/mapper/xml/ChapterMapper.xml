@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.guli.service.edu.mapper.ChapterMapper">
-
+    <resultMap id="getChapterNestedListMap" type="com.atguigu.guli.service.edu.entity.vo.ChapterVo">
+        <id column="id" property="id"/>
+        <result column="course_id" property="courseId"/>
+        <result column="title" property="title"/>
+        <result column="sort" property="sort"/>
+        <collection property="children" ofType="com.atguigu.guli.service.edu.entity.Video">
+            <id column="v_id" property="id"/>
+            <result column="v_title" property="title"/>
+            <result column="video_source_id" property="videoSourceId"/>
+            <result column="is_free" property="free"/>
+            <result column="v_sort" property="sort"/>
+            <result column="video_original_name" property="videoOriginalName"/>
+        </collection>
+    </resultMap>
+    <select id="getChapterNestedList" resultMap="getChapterNestedListMap">
+        select ch.id,ch.course_id,ch.title,ch.sort,
+            vi.id v_id,vi.title v_title,vi.video_source_id,vi.is_free,vi.sort v_sort,vi.video_original_name
+        from edu_chapter ch
+        left join edu_video vi on vi.chapter_id = ch.id
+        ${ew.customSqlSegment}
+    </select>
 </mapper>

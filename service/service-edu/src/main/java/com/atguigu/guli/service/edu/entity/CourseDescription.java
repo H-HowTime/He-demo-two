@@ -26,6 +26,11 @@ import lombok.experimental.Accessors;
 public class CourseDescription extends BaseEntity {
 
     private static final long serialVersionUID=1L;
+    //CourseDescription id值添加时使用课程id填充 在此声明会覆盖掉父类的主键策略雪花算法
+    @ApiModelProperty(value = "ID")
+    @TableId(value = "id", type = IdType.NONE)
+    //value表示当前属性映射到数据库中的哪个字段
+    private String id;
 
     @ApiModelProperty(value = "课程简介")
     private String description;

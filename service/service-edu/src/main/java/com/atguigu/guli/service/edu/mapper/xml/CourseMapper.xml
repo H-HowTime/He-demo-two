@@ -2,4 +2,88 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.guli.service.edu.mapper.CourseMapper">
 
+    <resultMap id="courseDetailByIdResultMap" type="com.atguigu.guli.service.edu.entity.vo.CourseDetailApiVo">
+        <id  column="id" property="id"/>
+        <result column="subject_parent_id" property="subjectParentId"/>
+        <result column="subject_id" property="subjectId"/>
+        <result column="title" property="title"/>
+        <result column="cover" property="cover"/>
+        <result column="price" property="price"/>
+        <result column="lesson_num" property="lessonNum"/>
+        <result column="buy_count" property="buyCount"/>
+        <result column="view_count" property="viewCount"/>
+        <result column="status" property="status"/>
+        <result column="description" property="description"/>
+        <result column="teacherId" property="teacherId"/>
+        <result column="name" property="name"/>
+        <result column="level" property="level"/>
+        <result column="avatar" property="avatar"/>
+        <result column="subjectParentTitle" property="subjectParentTitle"/>
+        <result column="subjectTitle" property="subjectTitle"/>
+        <collection property="chapters" ofType="com.atguigu.guli.service.edu.entity.vo.ChapterVo">
+            <id column="chapterId" property="id"/>
+            <result column="chapterTitle" property="title"/>
+            <collection property="children" ofType="com.atguigu.guli.service.edu.entity.Video">
+                <result column="videoTitle" property="title"/>
+                <result column="video_source_id" property="videoSourceId"/>
+                <result column="is_free" property="free"/>
+                <result column="video_original_name" property="videoOriginalName"/>
+            </collection>
+        </collection>
+    </resultMap>
+    <select id="courseDetailById" resultMap="courseDetailByIdResultMap">
+        select  t1.id,t1.subject_parent_id as subjectParentId,t1.subject_id as subjectId,t1.title,t1.cover,
+                    t1.price,t1.lesson_num,t1.buy_count,t1.view_count,t1.`status`,
+                t2.description,
+                t3.id as teacherId,t3.`name`,t3.`level`,t3.avatar,
+                t4.title as subjectParentTitle,
+                t5.title as subjectTitle,
+                t6.title as chapterTitle, t6.id as chapterId,
+                t7.title as videoTitle,t7.video_source_id,t7.is_free,t7.video_original_name
+        from edu_course t1
+        left join edu_course_description t2
+        on t1.id = t2.id
+        left join edu_teacher t3
+        on t1.teacher_id = t3.id
+        left join edu_subject t4
+        on t1.subject_parent_id = t4.id
+        left join edu_subject t5
+        on t1.subject_id = t5.id
+        left join  edu_chapter t6
+        on t1.id = t6.course_id
+        left join edu_video t7
+        on t6.id = t7.chapter_id
+        where t1.id = #{courseId}
+    </select>
+
+    <select id="courseInfoList" resultType="com.atguigu.guli.service.edu.entity.vo.CourseViewObject">
+        select co.id,co.cover,co.title,co.subject_parent_id,sub1.title levelOneTitle,
+            co.subject_id,sub2.title levelTwoTitle,co.lesson_num,co.view_count,co.buy_count,
+            co.teacher_id,te.`name`,co.price,co.`status`,co.publish_time,co.gmt_create
+        from edu_course co
+        left join edu_subject sub1 on co.subject_parent_id = sub1.id
+        left join edu_subject sub2 on co.subject_id = sub2.id
+        left join edu_teacher te on co.teacher_id = te.id
+    </select>
+    <select id="courseInfoPageList" resultType="com.atguigu.guli.service.edu.entity.vo.CourseViewObject">
+        select co.id,co.cover,co.title,co.subject_parent_id,sub1.title levelOneTitle,
+            co.subject_id,sub2.title levelTwoTitle,co.lesson_num,co.view_count,co.buy_count,
+            co.teacher_id,te.`name`,co.price,co.`status`,co.publish_time,co.gmt_create
+        from edu_course co
+        left join edu_subject sub1 on co.subject_parent_id = sub1.id
+        left join edu_subject sub2 on co.subject_id = sub2.id
+        left join edu_teacher te on co.teacher_id = te.id
+        ${ew.customSqlSegment}
+    </select>
+
+    <select id="getChapterNestedList" resultType="com.atguigu.guli.service.edu.entity.vo.CoursePublishVo">
+        select co.id,co.cover,co.title,co.lesson_num,co.price,
+            su1.title subjectParentTitle,su2.title subjectTitle,
+            te.`name` teacherName
+        from edu_course co
+        left join edu_teacher te on co.teacher_id = te.id
+        left join edu_subject su1 on co.subject_parent_id = su1.id
+        left join edu_subject su2 on co.subject_id = su2.id
+        ${ew.customSqlSegment}
+    </select>
 </mapper>

@@ -1,7 +1,11 @@
 package com.atguigu.guli.service.edu.service;
 
 import com.atguigu.guli.service.edu.entity.CourseCollect;
+import com.atguigu.guli.service.edu.entity.vo.CollectCourseVo;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +17,11 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface CourseCollectService extends IService<CourseCollect> {
 
+    boolean isCollectCourse(String courseId, String memberId);
+
+    void saveCollectCourse(String courseId, String memberId);
+
+    List<CollectCourseVo> getCollectCourseList(String memberId);
+
+    void deleteCollectCourse(String courseId, String memberId);
 }

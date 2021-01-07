@@ -1,4 +1,4 @@
-package com.atguigu.guli.service.edu.controller;
+package com.atguigu.guli.service.trade.controller;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- * 课程科目 前端控制器
+ * 订单 前端控制器
  * </p>
  *
  * @author atguigu
- * @since 2020-12-15
+ * @since 2021-01-05
  */
 @RestController
-@RequestMapping("/edu/subject")
-public class SubjectController {
+@RequestMapping("/trade/order")
+public class OrderController {
 
 }
 

@@ -1,0 +1,36 @@
+2020-12-16 13:00:35 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:00:48 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:00:55 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:02:15 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:02:21 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:02:42 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:02:49 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:02:54 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:02:57 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:03:10 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:03:21 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:03:30 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:03:33 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:03:41 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:04:19 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:04:58 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:05:08 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:05:15 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:05:30 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:05:34 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:05:49 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:05:57 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:06:12 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:06:16 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:06:27 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:06:30 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:06:49 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised
+2020-12-16 13:08:16 |WARN  |http-nio-8110-exec-1 |AbstractHandlerExceptionResolver.java:199 |org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver |Resolved [org.springframework.jdbc.BadSqlGrammarException: 
+### Error querying database.  Cause: java.sql.SQLSyntaxErrorException: Unknown column 'deleted' in 'field list'
+### The error may exist in com/atguigu/guli/service/edu/mapper/TeacherMapper.java (best guess)
+### The error may involve defaultParameterMap
+### The error occurred while setting parameters
+### SQL: SELECT  id,name,intro,career,level,avatar,sort,join_date,deleted,gmt_create,gmt_modified  FROM edu_teacher   WHERE deleted=0
+### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'deleted' in 'field list'
+; bad SQL grammar []; nested exception is java.sql.SQLSyntaxErrorException: Unknown column 'deleted' in 'field list']
+2020-12-16 13:08:50 |WARN  |restartedMain |DirectJDKLog.java:173 |org.apache.tomcat.util.modeler.Registry |The MBean registry cannot be disabled because it has already been initialised

@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: service-vod #当前应用名 在动态配置和注册服务的时候使用
+  profiles: #激活专有环境（应用：全局统一日志、nacos配置中心动态配置）
+    active: dev
+    cloud:
+      nacos:
+        discovery:
+          server-addr: localhost:8848  #将该服务注册到端口号为8848的nacos注册服务中心
+  servlet:
+    multipart:
+      max-file-size: 1024MB #配置Tomcat单次请求上传文件的大小 默认为1MB
+      max-request-size: 1024MB #配置Tomcat所有请求一次上传的文件大小 默认为10MB
+  redis:
+    host: 192.168.230.128
+    port: 6379
+
+mybatis-plus: #配置mp的日志信息 查看sql语句
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+server:
+  port: 8130 #当前应用的端口号
+
+#自定义配置 放到nacos配置中心配置
+#aliyun:
+#  vod:
+#    accessKeyId: "LTAI4GEiESw7Vcys5W7XaRcT"  #阿里云KeyId
+#    accessKeySecret: "eHBetznpl9EIeMxw4kFBOLfrqtq7UW"  #阿里云KeySecret
+#    templateGroupId: "c38a90a68e76afc2051dcdc49e673c93"  #模板组ID（可选）
+#    workflowId: "81b76f5e19647436b52a19ce2f8e6cd0"  #工作流ID(可选)
