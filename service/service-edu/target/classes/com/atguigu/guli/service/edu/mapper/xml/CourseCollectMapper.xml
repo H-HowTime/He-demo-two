@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.guli.service.edu.mapper.CourseCollectMapper">
+
+    <select id="getCollectCourseList" resultType="com.atguigu.guli.service.edu.entity.vo.CollectCourseVo">
+        select cc.id,cc.gmt_create,co.id as courseId,co.title,co.price,co.lesson_num,t.`name` as teacherName,co.cover
+        from edu_course_collect cc
+        left join edu_course co on cc.course_id = co.id
+        left join edu_teacher t on co.teacher_id = t.id
+        where cc.member_id = #{memberId}
+        order by cc.gmt_create desc
+    </select>
+
+</mapper>

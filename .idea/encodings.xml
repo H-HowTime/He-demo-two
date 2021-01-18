@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/common/common-util/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/common/service-base/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/infrastructure/api-gateway-h/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service/service-cms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service/service-edu/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service/service-oss/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service/service-sms/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service/service-statistics/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service/service-trade/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service/service-ucenter/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/service/service-vod/src/main/java" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

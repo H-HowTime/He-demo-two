@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: service-statistics #当前应用名 在动态配置和注册服务的时候使用
+  datasource: #配置数据库连接信息
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/guli_statistics?serverTimezone=GMT%2B8
+  jackson: #JSON格式化时间日期格式设置，当后端向前端传递json时间类型时，前端显示的数据格式
+    time-zone: GMT+8 #东八区
+    date-format: yyyy-MM-dd
+  profiles: #激活专有环境（应用：全局统一日志、nacos配置中心动态配置）
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848  #将该服务注册到端口号为8848的nacos注册服务中心
+
+    sentinel: #开启sentinel
+      transport:
+        port: 8081 #指定和sentinel控制台交流的端口号
+        dashboard: localhost:8080 #指定控制台服务的地址
+      eager: true #取消来加载（sentinel默认采用懒加载，只用应用被访问的时候才会加载到控制台）
+      filter:
+        url-patterns: /** #默认拦截路径
+  redis:
+    host: 192.168.230.128
+    port: 6379 #配置Redis 连接池使用默认的
+
+mybatis-plus: #配置mp的日志信息 查看sql语句
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:com/atguigu/guli/service/statistics/mapper/xml/*xml
+  #当在mapper接口中自定义方法时，要和mapper.xml中的sql语句一起动态创建接口的实现类对象 告诉mbp xml文件所在位置
+server:
+  port: 8180 #当前应用的端口号
+
+feign:
+  sentinel:
+    enabled: true #开启openfeign对sentinel的支持

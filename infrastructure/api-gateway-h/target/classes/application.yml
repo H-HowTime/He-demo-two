@@ -1,0 +1,65 @@
+spring:
+  application:
+    name: api-gateway #当前应用名 在动态配置和注册服务的时候使用
+  profiles: #激活专有环境（应用：全局统一日志、nacos配置中心动态配置）
+    active: dev
+  redis:
+    host: 192.168.230.128
+    port: 6379
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848  #将该服务注册到端口号为8848的nacos注册服务中心
+    gateway:
+      routes: #是一个list集合，可以配置多个路由
+        - id: service-edu #路由id，可以随意写，建议使用应用名
+          predicates: #当前路由的一组断言，决定访问网关的请求是否有当前路由处理
+            - Path=/user/**,/*/edu/** #访问当前网关的地址，第二级路径为edu的请求会有当前路由断言成功
+          uri: lb://service-edu #uri断言成功交由哪个微服务处理
+                              # 方式一：直接使用 http://localhost:8110 ---> http://localhost:9110/*/edu/**时会指定自动转换为http://localhost:8110/*/edu/**
+                              # 方式二：使用微服务名，设置负载均衡 lb（注册中心服务名）://service-edu
+#          filter: 配置局部过滤器
+        - id: service-ucenter
+          uri: lb://service-ucenter
+          predicates:
+            - Path=/*/ucenter/**
+        - id: service-oss
+          uri: lb://service-oss
+          predicates:
+            - Path=/*/oss/**
+        - id: service-vod
+          uri: lb://service-vod
+          predicates:
+            - Path=/*/vod/**
+        - id: service-cms
+          uri: lb://service-cms
+          predicates:
+            - Path=/*/cms/**
+        - id: service-sms
+          uri: lb://service-sms
+          predicates:
+            - Path=/*/sms/**
+        - id: service-trade
+          uri: lb://service-trade
+          predicates:
+            - Path=/*/trade/**
+        - id: service-statistics
+          uri: lb://service-statistics
+          predicates:
+            - Path=/*/statistics/**
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true # gateway可以发现nacos中的微服务，并自动生成转发路由
+#                        # 默认会将注册中心的微服务的服务名当做每个微服务路径的前缀
+
+    sentinel: #开启sentinel
+      transport:
+        port: 8081 #指定和sentinel控制台交流的端口号
+        dashboard: localhost:8080 #指定控制台服务的地址
+      eager: true #取消来加载（sentinel默认采用懒加载，只用应用被访问的时候才会加载到控制台）
+      filter:
+        url-patterns: /** #默认拦截路径
+
+server:
+  port: 9110 #当前应用的端口号

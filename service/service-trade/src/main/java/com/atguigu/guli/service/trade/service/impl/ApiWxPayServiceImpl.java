@@ -55,7 +55,7 @@ public class ApiWxPayServiceImpl implements ApiWxPayService {
     @Override
     public PayVo createNative(String orderNo, HttpServletRequest request) {
 
-        log.info("nacos配置中心：{}",wxPayProperties);
+        log.info("nacos配置中心微信支付：{}",wxPayProperties);
 
         try {
             //获取终端（客户端）IP

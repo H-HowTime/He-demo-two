@@ -54,6 +54,9 @@ public class ApiWxServiceImpl implements ApiWxService {
 
     @Override
     public String genQrConnect(HttpSession session) {
+
+        log.info("nacos配置中心微信登录：{}",wxProperties);
+
         String qrCodeUrl = "https://open.weixin.qq.com/connect/qrconnect" +
                 "?appid=%s" +  //%s字符串中的占位符
                 "&redirect_uri=%s" +

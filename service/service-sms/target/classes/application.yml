@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: service-sms #当前应用名 在动态配置和注册服务的时候使用
+  profiles: #激活专有环境（应用：全局统一日志、nacos配置中心动态配置）
+    active: dev
+    cloud:
+      nacos:
+        discovery:
+          server-addr: localhost:8848  #将该服务注册到端口号为8848的nacos注册服务中心  同时也指明了配置中心
+  redis:
+    port: 6379
+    host: 192.168.230.128  #配置Redis
+    lettuce:
+      pool:
+        max-active: 20  #最大连接数，负值表示没有限制，默认8
+        max-wait: -1    #最大阻塞等待时间，负值表示没限制，默认-1
+        max-idle: 8     #最大空闲连接，默认8
+        min-idle: 0     #最小空闲连接，默认0
+
+server:
+  port: 8150 #当前应用的端口号
+
+##自定义配置 放到nacos配置中心配置
+#aliyun:
+#  sms:
+#    regionId: cn-hangzhou #地域ID
+#    accessKeyId: "LTAI4GEiESw7Vcys5W7XaRcT" #阿里云KeyId
+#    accessKeySecret: "eHBetznpl9EIeMxw4kFBOLfrqtq7UW" #阿里云KeySecret
+#    templateCode: SMS_205881616  #短信模板code
+#    signName: 美年旅游 #短信模板签名
